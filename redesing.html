@@ -1,0 +1,824 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peta Lokasi — Light Map-First Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#D95D24',
+        'success': '#15803D',
+        'warning': '#B45309',
+        'light-primary': '#B84309',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#FFF0E8',
+        'light-on-primary-container': '#5A1C00',
+        'light-secondary': '#57534E',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#ECEAE4',
+        'light-on-secondary-container': '#292524',
+        'light-tertiary': '#00628F',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#E6F2FF',
+        'light-on-tertiary-container': '#00344F',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F7F6F2',
+        'light-on-background': '#18181B',
+        'light-surface': '#F7F6F2',
+        'light-surface-dim': '#EAE8E1',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F1EFE9',
+        'light-surface-container': '#EAE7DF',
+        'light-surface-container-high': '#E2DFD5',
+        'light-surface-container-highest': '#D8D4C9',
+        'light-on-surface': '#18181B',
+        'light-surface-variant': '#E7E5DE',
+        'light-on-surface-variant': '#52525B',
+        'light-outline': '#71717A',
+        'light-outline-variant': '#E4E2DA',
+        'light-inverse-surface': '#27272A',
+        'light-inverse-on-surface': '#FAFAFA',
+        'light-inverse-primary': '#FFB599',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'dark-primary': '#FFB599',
+        'dark-on-primary': '#5A1C00',
+        'dark-primary-container': '#8B3000',
+        'dark-on-primary-container': '#FFDBCE',
+        'dark-secondary': '#D6D3D1',
+        'dark-on-secondary': '#292524',
+        'dark-secondary-container': '#44403C',
+        'dark-on-secondary-container': '#F5F5F4',
+        'dark-tertiary': '#8DCDFF',
+        'dark-on-tertiary': '#00344F',
+        'dark-tertiary-container': '#004B70',
+        'dark-on-tertiary-container': '#CAE6FF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#141416',
+        'dark-on-background': '#F4F4F5',
+        'dark-surface': '#141416',
+        'dark-surface-dim': '#0F0F11',
+        'dark-surface-bright': '#27272A',
+        'dark-surface-container-lowest': '#0C0C0E',
+        'dark-surface-container-low': '#1C1C1F',
+        'dark-surface-container': '#222226',
+        'dark-surface-container-high': '#2C2C31',
+        'dark-surface-container-highest': '#36363C',
+        'dark-on-surface': '#F4F4F5',
+        'dark-surface-variant': '#2E2E34',
+        'dark-on-surface-variant': '#A1A1AA',
+        'dark-outline': '#71717A',
+        'dark-outline-variant': '#2E2E34',
+        'dark-inverse-surface': '#F4F4F5',
+        'dark-inverse-on-surface': '#18181B',
+        'dark-inverse-primary': '#B84309',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Red Hat Display"', 'sans-serif'],
+        'headline': ['"Red Hat Display"', 'sans-serif'],
+        'title': ['"Commissioner"', 'sans-serif'],
+        'body': ['"Commissioner"', 'sans-serif'],
+        'label': ['"Commissioner"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-md': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-md-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.15px', fontWeight: '700' }],
+        'title-md': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.15px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '500' }],
+        'mono-sm': ['11px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&amp;family=Red+Hat+Display:wght@600;700&amp;family=Spline+Sans+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+    .light-drafting-grid {
+      background-image: radial-gradient(rgba(24, 24, 27, 0.06) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased min-h-[1024px] flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Top Command & Export Bar -->
+  <header class="sticky top-0 z-30 bg-light-surface-container-lowest border-b border-light-outline-variant">
+    <div class="max-w-[1440px] mx-auto px-gutter-lg h-16 flex items-center justify-between gap-gutter-md">
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded bg-light-tertiary text-light-on-tertiary flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">explore</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <span data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface tracking-tight">Peta Lokasi</span>
+            <span data-design-text-token="label-sm" class="font-body text-label-sm px-2 py-0.5 rounded-full bg-light-tertiary-container text-light-on-tertiary-container">Gratis</span>
+          </div>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Peta lokasi gratis · Siap cetak 300 DPI</span>
+        </div>
+      </div>
+
+      <!-- Export Actions in Header -->
+      <div class="flex items-center gap-gutter-sm">
+        <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center justify-center gap-1.5 px-gutter-md py-gutter-sm rounded bg-light-surface-container-lowest text-light-on-surface border border-light-outline-variant hover:bg-light-surface-container-low active:scale-[0.98] transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-[16px] text-light-on-surface-variant" aria-hidden="true">polyline</span>
+          <span data-design-text-token="label-lg" class="font-body text-label-lg">SVG</span>
+        </button>
+
+        <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center justify-center gap-1.5 px-gutter-md py-gutter-sm rounded bg-light-surface-container-lowest text-light-on-surface border border-light-outline-variant hover:bg-light-surface-container-low active:scale-[0.98] transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-[16px] text-light-on-surface-variant" aria-hidden="true">picture_as_pdf</span>
+          <span data-design-text-token="label-lg" class="font-body text-label-lg">PDF</span>
+        </button>
+
+        <button data-component-id="button-with-icon-ocean" data-component-type="button" data-component-variant="with-icon" type="button" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-md py-gutter-sm rounded bg-light-tertiary text-light-on-tertiary shadow-sm hover:opacity-90 active:scale-[0.98] transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">download</span>
+          <span data-design-text-token="label-lg" class="font-body text-label-lg">Unduh PNG</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Map-First Workbench (Map Left/Center 8 cols, Inspector Right 4 cols) -->
+  <main class="flex-1 max-w-[1440px] w-full mx-auto px-gutter-lg py-gutter-lg grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+
+    <!-- Left/Center Map Drafting Stage (8 cols) -->
+    <div class="lg:col-span-8 flex flex-col gap-gutter-md">
+
+      <section class="bg-light-surface-container-low light-drafting-grid rounded-lg border border-light-outline-variant p-gutter-lg flex flex-col gap-gutter-md">
+        <!-- Stage Top Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-gutter-sm">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-light-tertiary inline-block" aria-hidden="true"></span>
+            <h1 data-design-text-token="title-md" class="font-headline text-title-md text-light-on-surface">Kanvas Peta</h1>
+            <span id="v2-status-pill" data-design-text-token="mono-sm" class="font-mono text-mono-sm px-2.5 py-1 rounded-full bg-light-surface-container-lowest text-light-on-surface-variant border border-light-outline-variant">
+              Klasik Kanan · Tanpa basemap
+            </span>
+          </div>
+
+          <!-- Floating Zoom Pill -->
+          <div class="inline-flex items-center rounded-full bg-light-surface-container-lowest border border-light-outline-variant p-0.5 gap-1 shadow-sm">
+            <button data-component-id="button-icon-pill" data-component-type="button" data-component-variant="icon" type="button" id="v2-zoom-out" aria-label="Perkecil peta" class="w-7 h-7 rounded-full inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">remove</span>
+            </button>
+            <span id="v2-zoom-readout" data-design-text-token="mono-sm" class="font-mono text-mono-sm tabular-nums text-light-on-surface px-2">100%</span>
+            <button data-component-id="button-icon-pill" data-component-type="button" data-component-variant="icon" type="button" id="v2-zoom-in" aria-label="Perbesar peta" class="w-7 h-7 rounded-full inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">add</span>
+            </button>
+            <button data-component-id="button-icon-pill" data-component-type="button" data-component-variant="icon" type="button" id="v2-zoom-reset" aria-label="Reset posisi peta" class="w-7 h-7 rounded-full inline-flex items-center justify-center text-light-on-surface-variant hover:text-light-on-surface hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[15px]" aria-hidden="true">refresh</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Crisp Print-Ready Map Sheet -->
+        <div class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant shadow-[0_12px_32px_-8px_rgba(24,24,27,0.08)] p-4">
+          <div class="border border-light-on-surface grid grid-cols-12 bg-light-surface-container-lowest text-light-on-surface">
+
+            <!-- Map Area (8 cols) -->
+            <div class="col-span-12 md:col-span-8 relative border-b md:border-b-0 md:border-r border-light-on-surface flex flex-col">
+              <div class="grid grid-cols-3 border-b border-light-outline-variant px-4 py-1 text-center font-mono text-mono-sm text-light-on-surface-variant tabular-nums">
+                <span>112°46&#39;00&#34; BT</span>
+                <span>112°47&#39;00&#34; BT</span>
+                <span>112°48&#39;00&#34; BT</span>
+              </div>
+
+              <div class="relative flex-1 min-h-[400px] overflow-hidden flex items-center justify-center">
+                <!-- North Arrow -->
+                <div class="absolute top-3 right-3 z-10 flex flex-col items-center gap-0.5 pointer-events-none">
+                  <span class="font-headline text-label-sm text-light-on-surface">U</span>
+                  <svg width="16" height="22" viewBox="0 0 16 22" fill="none" aria-hidden="true">
+                    <path d="M8 1L14 19L8 15L2 19L8 1Z" fill="#18181B"></path>
+                  </svg>
+                </div>
+
+                <!-- Vector Map SVG -->
+                <svg id="v2-map-svg" viewBox="0 0 540 390" class="w-full h-full transition-transform duration-state-change ease-state-change" role="img" aria-label="Peta Desa Sendang Dajah">
+                  <g stroke="#D4D4D8" stroke-width="0.8">
+                    <path d="M90 80 v10 M85 85 h10"></path>
+                    <path d="M270 80 v10 M265 85 h10"></path>
+                    <path d="M450 80 v10 M445 85 h10"></path>
+                    <path d="M90 195 v10 M85 200 h10"></path>
+                    <path d="M270 195 v10 M265 200 h10"></path>
+                    <path d="M450 195 v10 M445 200 h10"></path>
+                    <path d="M90 310 v10 M85 315 h10"></path>
+                    <path d="M270 310 v10 M265 315 h10"></path>
+                    <path d="M450 310 v10 M445 315 h10"></path>
+                  </g>
+                  <g fill="none" stroke="#71717A" stroke-width="0.9">
+                    <path d="M0 0 L240 0 L225 65 L265 110 L215 160 L155 155 L110 195 L45 180 L0 155 Z" fill="#FAFAFA"></path>
+                    <path d="M240 0 L540 0 L540 95 L470 105 L430 75 L350 95 L265 110 L225 65 Z" fill="#FAFAFA"></path>
+                    <path d="M350 95 L430 75 L470 105 L450 175 L395 190 L365 150 Z" fill="#FAFAFA"></path>
+                    <path d="M470 105 L540 95 L540 245 L465 265 L415 225 L450 175 Z" fill="#FAFAFA"></path>
+                    <path d="M0 155 L45 180 L110 195 L145 240 L185 265 L195 310 L120 345 L40 310 L0 325 Z" fill="#FAFAFA"></path>
+                    <path d="M195 310 L250 285 L340 295 L385 275 L415 340 L370 390 L210 390 L175 350 Z" fill="#FAFAFA"></path>
+                    <path d="M415 225 L465 265 L540 245 L540 390 L370 390 L415 340 L385 275 Z" fill="#FAFAFA"></path>
+                    <path d="M0 325 L40 310 L120 345 L175 350 L210 390 L0 390 Z" fill="#FAFAFA"></path>
+                  </g>
+                  <path d="M0 155 L45 180 L110 195 L145 240 L195 310 L175 350 L210 390" fill="none" stroke="#3F3F46" stroke-width="1.4" stroke-dasharray="6 4"></path>
+                  <path d="M450 0 L430 75 L470 105 L450 175 L415 225 L385 275 L415 340 L440 390" fill="none" stroke="#18181B" stroke-width="1.5" stroke-dasharray="10 3 2 3"></path>
+                  <path d="M110 195 L155 155 L215 160 L265 110 L350 95 L365 150 L395 190 L415 225 L385 275 L340 295 L250 285 L195 310 L185 265 L145 240 Z" fill="#00628F" stroke="#18181B" stroke-width="1.5" stroke-linejoin="round"></path>
+                  <g font-family="Commissioner, sans-serif" font-size="10" fill="#52525B" text-anchor="middle">
+                    <text x="145" y="102">Sanggra Agung</text>
+                    <text x="485" y="55">Bancang</text>
+                    <text x="425" y="142">Petapan</text>
+                    <text x="492" y="185">Alang Alang</text>
+                    <text x="95" y="258">Sendang Laok</text>
+                    <text x="295" y="340">Morkepek</text>
+                    <text x="480" y="335">Bringen</text>
+                    <text x="52" y="365">Jukong</text>
+                    <text x="155" y="378">Labang</text>
+                  </g>
+                  <text x="275" y="198" font-family="Red Hat Display, sans-serif" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.4">SENDANG DAJAH</text>
+                </svg>
+              </div>
+
+              <div class="grid grid-cols-3 border-t border-light-outline-variant px-4 py-1 text-center font-mono text-mono-sm text-light-on-surface-variant tabular-nums">
+                <span>112°46&#39;00&#34; BT</span>
+                <span>112°47&#39;00&#34; BT</span>
+                <span>112°48&#39;00&#34; BT</span>
+              </div>
+            </div>
+
+            <!-- Print Info Panel (4 cols) -->
+            <div class="col-span-12 md:col-span-4 p-4 flex flex-col justify-between gap-4 bg-light-surface-container-lowest">
+              <div class="flex flex-col gap-3.5">
+                <div class="border-b border-light-outline-variant pb-2.5">
+                  <div class="font-headline text-title-md text-light-on-surface tracking-wide uppercase">PETA LOKASI</div>
+                  <div class="font-body text-body-sm text-light-on-surface-variant mt-0.5">Desa Sendang Dajah</div>
+                </div>
+
+                <div class="border-b border-light-outline-variant pb-2.5 flex flex-col gap-1.5">
+                  <span class="font-body text-label-sm font-semibold text-light-on-surface uppercase tracking-wider">SKALA</span>
+                  <div class="flex flex-col gap-1">
+                    <div class="flex w-36 h-1.5 border border-light-on-surface">
+                      <div class="w-1/4 bg-light-on-surface"></div>
+                      <div class="w-1/4 bg-light-surface-container-lowest"></div>
+                      <div class="w-1/4 bg-light-on-surface"></div>
+                      <div class="w-1/4 bg-light-surface-container-lowest"></div>
+                    </div>
+                    <div class="flex justify-between w-36 font-mono text-mono-sm text-light-on-surface-variant tabular-nums">
+                      <span>0</span>
+                      <span>0.5</span>
+                      <span>1 km</span>
+                    </div>
+                  </div>
+                  <span class="font-body text-body-sm text-light-on-surface-variant">Proyeksi Web Mercator, datum WGS 84</span>
+                </div>
+
+                <div class="border-b border-light-outline-variant pb-2.5 flex flex-col gap-1.5">
+                  <span class="font-body text-label-sm font-semibold text-light-on-surface uppercase tracking-wider">LEGENDA</span>
+                  <ul class="flex flex-col gap-1.5 text-body-sm text-light-on-surface-variant">
+                    <li class="flex items-center gap-2">
+                      <span class="w-4 h-3 bg-light-tertiary border border-light-on-surface inline-block shrink-0"></span>
+                      <span>Lokasi</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-4 h-3 bg-light-surface-container-low border border-light-outline inline-block shrink-0"></span>
+                      <span>Desa/kelurahan lain</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-4 border-t-2 border-dashed border-light-on-surface-variant inline-block shrink-0"></span>
+                      <span>Batas kecamatan</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-4 border-t-2 border-dotted border-light-on-surface inline-block shrink-0"></span>
+                      <span>Batas kabupaten/kota</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="border-b border-light-outline-variant pb-2.5 flex flex-col gap-1.5">
+                  <span class="font-body text-label-sm font-semibold text-light-on-surface uppercase tracking-wider">PETA INSET</span>
+                  <div class="border border-light-outline-variant bg-light-tertiary-container/40 h-14 rounded-none flex items-center justify-center p-1">
+                    <svg viewBox="0 0 180 44" class="w-full h-full" aria-hidden="true">
+                      <path d="M10 14 L26 22 L32 30 L18 28 Z M38 30 L64 32 L68 37 L40 36 Z M66 10 L86 12 L84 26 L68 24 Z M94 12 L108 14 L106 28 L96 24 Z M132 18 L166 20 L168 34 L138 30 Z" fill="#E4E2DA" stroke="#71717A" stroke-width="0.6"></path>
+                      <rect x="64" y="29" width="12" height="10" fill="none" stroke="#00628F" stroke-width="1.2"></rect>
+                    </svg>
+                  </div>
+                  <div class="grid grid-cols-3 gap-1 text-center">
+                    <div class="flex flex-col gap-0.5">
+                      <div class="h-10 border border-light-outline-variant bg-light-surface-container-low flex items-center justify-center">
+                        <span class="w-2.5 h-1.5 bg-light-tertiary inline-block"></span>
+                      </div>
+                      <span class="font-body text-label-sm text-light-on-surface-variant leading-tight">Jawa Timur</span>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                      <div class="h-10 border border-light-outline-variant bg-light-surface-container-low flex items-center justify-center">
+                        <span class="w-2 h-2 bg-light-tertiary inline-block"></span>
+                      </div>
+                      <span class="font-body text-label-sm text-light-on-surface-variant leading-tight">Bangkalan</span>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                      <div class="h-10 border border-light-outline-variant bg-light-surface-container-low flex items-center justify-center">
+                        <span class="w-2.5 h-2 bg-light-tertiary inline-block"></span>
+                      </div>
+                      <span class="font-body text-label-sm text-light-on-surface-variant leading-tight">Labang</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-0.5">
+                <span class="font-body text-label-sm font-semibold text-light-on-surface uppercase tracking-wider">SUMBER DATA</span>
+                <span class="font-body text-body-sm text-light-on-surface-variant italic">Batas administrasi Kepmendagri No 300.2.2-2138/2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Bottom Hint & Metadata -->
+        <div class="flex flex-wrap items-center justify-between gap-gutter-sm pt-1">
+          <div class="flex items-center gap-2 text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">pan_tool_alt</span>
+            <span data-design-text-token="body-sm" class="font-body text-body-sm">Scroll untuk zoom, drag untuk geser. Unduhan mengikuti tampilan ini.</span>
+          </div>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface-variant">WGS 84 · A4 Landscape</span>
+        </div>
+      </section>
+
+      <!-- Compact 3-Step Horizontal Strip -->
+      <section class="bg-light-surface-container-lowest rounded-lg border border-light-outline-variant p-gutter-md">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-md">
+          <div class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-light-tertiary-container text-light-on-tertiary-container inline-flex items-center justify-center font-mono text-mono-sm shrink-0">1</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-pretty">Cari lokasi lalu pilih gaya peta dan basemap di panel kanan.</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-light-tertiary-container text-light-on-tertiary-container inline-flex items-center justify-center font-mono text-mono-sm shrink-0">2</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-pretty">Atur zoom dan posisi peta langsung pada kanvas pratinjau.</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-light-tertiary-container text-light-on-tertiary-container inline-flex items-center justify-center font-mono text-mono-sm shrink-0">3</span>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-pretty">Ekspor gratis ke PNG 300 dpi, PDF A4, atau SVG vektor.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right Tabbed Inspector Panel (4 cols) -->
+    <aside class="lg:col-span-4 bg-light-surface-container-lowest rounded-lg border border-light-outline-variant divide-y divide-light-outline-variant">
+
+      <!-- 1. Lokasi -->
+      <section class="p-gutter-md flex flex-col gap-3">
+        <div class="flex items-center justify-between gap-2">
+          <h2 data-design-text-token="title-md" class="font-headline text-title-md text-light-on-surface">Lokasi Wilayah</h2>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface-variant tabular-nums px-2 py-0.5 rounded-full bg-light-surface-container-low">1 / 5</span>
+        </div>
+
+        <!-- Level Segmented Control -->
+        <div role="tablist" aria-label="Tingkat wilayah" class="grid grid-cols-3 p-1 rounded-full bg-light-surface-container-low border border-light-outline-variant gap-1">
+          <button role="tab" id="v2-tab-desa" data-v2-level="Desa" aria-selected="true" tabindex="0" class="px-2 py-1.5 rounded-full bg-light-tertiary text-light-on-tertiary shadow-sm transition-colors duration-state-change ease-state-change">
+            <span data-design-text-token="label-sm" class="font-body text-label-sm">Desa</span>
+          </button>
+          <button role="tab" id="v2-tab-kecamatan" data-v2-level="Kecamatan" aria-selected="false" tabindex="-1" class="px-2 py-1.5 rounded-full text-light-on-surface-variant hover:text-light-on-surface transition-colors duration-state-change ease-state-change">
+            <span data-design-text-token="label-sm" class="font-body text-label-sm">Kecamatan</span>
+          </button>
+          <button role="tab" id="v2-tab-kab" data-v2-level="Kab/Kota" aria-selected="false" tabindex="-1" class="px-2 py-1.5 rounded-full text-light-on-surface-variant hover:text-light-on-surface transition-colors duration-state-change ease-state-change">
+            <span data-design-text-token="label-sm" class="font-body text-label-sm">Kab/Kota</span>
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <label class="flex flex-col gap-1 w-full">
+          <span class="sr-only">Cari lokasi</span>
+          <div class="relative flex items-center">
+            <span aria-hidden="true" class="material-symbols-outlined absolute left-3 text-[18px] text-light-outline pointer-events-none">search</span>
+            <input id="v2-search-input" type="search" placeholder="Ketik nama desa/kelurahan..." class="w-full pl-9 pr-gutter-md py-2 rounded bg-light-surface-container-low text-light-on-surface border border-light-outline-variant placeholder:text-light-outline font-body text-body-md focus:bg-light-surface-container-lowest focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary-container focus:outline-none transition-colors duration-state-change ease-state-change">
+          </div>
+        </label>
+
+        <!-- Selected Location Chip -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span data-component-id="chip-input-ocean" data-component-type="chip" data-component-variant="input" class="inline-flex items-center gap-1.5 pl-3 pr-2 py-1 rounded-full bg-light-tertiary-container text-light-on-tertiary-container border border-light-outline-variant">
+            <span data-design-text-token="label-md" class="font-body text-label-md">Desa Sendang Dajah</span>
+            <button type="button" aria-label="Hapus Desa Sendang Dajah" class="inline-flex items-center justify-center w-4 h-4 rounded-full hover:bg-light-surface-container-lowest transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[14px]" aria-hidden="true">close</span>
+            </button>
+          </span>
+        </div>
+      </section>
+
+      <!-- 2. Gaya Peta (with Visual Previews) -->
+      <section class="p-gutter-md flex flex-col gap-3">
+        <div class="flex items-center justify-between gap-2">
+          <h2 data-design-text-token="title-md" class="font-headline text-title-md text-light-on-surface">Gaya Peta</h2>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">10 gaya</span>
+        </div>
+
+        <!-- Panel: Gaya Peta with Visual Previews -->
+        <div id="v2-panel-layout" class="grid grid-cols-2 gap-2.5">
+          <!-- Klasik Kanan (Active) -->
+          <button type="button" data-v2-layout="Klasik Kanan" class="v2-layout-btn text-left rounded-md p-2 border-2 border-light-tertiary bg-light-tertiary-container/35 flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="relative w-full aspect-[4/3] rounded-sm bg-light-surface-container-lowest border border-light-outline-variant overflow-hidden p-1.5 flex gap-1">
+              <div class="flex-1 bg-light-surface-container-low rounded-none flex items-center justify-center">
+                <svg viewBox="0 0 60 44" class="w-full h-full"><path d="M18 16 L32 12 L42 20 L38 30 L24 32 L16 24 Z" fill="#00628F" opacity="0.9"></path><path d="M6 10 L18 16 M32 12 L48 6 M38 30 L52 38" stroke="#A1A1AA" stroke-width="0.8" stroke-dasharray="2 1.5"></path></svg>
+              </div>
+              <div class="w-1/3 flex flex-col gap-1 justify-between py-0.5">
+                <div class="h-1.5 w-full bg-light-on-surface rounded-none"></div>
+                <div class="h-1 w-3/4 bg-light-outline rounded-none"></div>
+                <div class="h-4 w-full bg-light-surface-container rounded-none"></div>
+                <div class="h-3 w-full bg-light-tertiary-container rounded-none"></div>
+              </div>
+              <span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-light-tertiary text-light-on-tertiary inline-flex items-center justify-center">
+                <span class="material-symbols-outlined text-[12px]" aria-hidden="true">check</span>
+              </span>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Klasik Kanan</span>
+          </button>
+
+          <!-- Klasik Portrait -->
+          <button type="button" data-v2-layout="Klasik Portrait" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-surface-container-low border border-light-outline-variant overflow-hidden p-1.5 flex items-center justify-center">
+              <div class="h-full aspect-[3/4] bg-light-surface-container-lowest border border-light-outline-variant p-1 flex flex-col gap-1">
+                <div class="flex-1 bg-light-surface-container-low flex items-center justify-center">
+                  <svg viewBox="0 0 40 40" class="w-full h-full"><path d="M10 14 L22 10 L30 18 L26 28 L14 26 Z" fill="#00628F" opacity="0.85"></path></svg>
+                </div>
+                <div class="h-2.5 w-full bg-light-surface-container rounded-none"></div>
+              </div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Klasik Portrait</span>
+          </button>
+
+          <!-- Navy Kiri -->
+          <button type="button" data-v2-layout="Navy Kiri" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-surface-container-lowest border border-light-outline-variant overflow-hidden flex flex-col">
+              <div class="h-3 bg-light-tertiary border-b border-light-outline-variant px-1.5 flex items-center">
+                <div class="h-1 w-10 bg-light-on-tertiary rounded-none"></div>
+              </div>
+              <div class="flex-1 p-1.5 flex gap-1">
+                <div class="w-1/3 bg-light-surface-container-low rounded-none"></div>
+                <div class="flex-1 bg-light-surface-container-low rounded-none flex items-center justify-center">
+                  <svg viewBox="0 0 40 30" class="w-full h-full"><path d="M12 10 L24 8 L30 16 L22 24 L12 20 Z" fill="#00628F" opacity="0.9"></path></svg>
+                </div>
+              </div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Navy Kiri</span>
+          </button>
+
+          <!-- Atlas Bingkai Ganda -->
+          <button type="button" data-v2-layout="Atlas Bingkai Ganda" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-surface-container border border-light-outline p-1 flex">
+              <div class="w-full h-full border border-light-on-surface-variant bg-light-surface-container-lowest p-1 flex gap-1">
+                <div class="flex-1 bg-light-surface-container-low flex items-center justify-center">
+                  <svg viewBox="0 0 40 30" class="w-full h-full"><path d="M12 12 L22 8 L28 16 L20 24 Z" fill="#8B4E35" opacity="0.9"></path></svg>
+                </div>
+                <div class="w-1/3 bg-light-surface-container-low"></div>
+              </div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Atlas Bingkai Ganda</span>
+          </button>
+
+          <!-- Header Bar -->
+          <button type="button" data-v2-layout="Header Bar" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-surface-container-lowest border border-light-outline-variant overflow-hidden flex flex-col">
+              <div class="h-3 bg-light-primary px-1.5 flex items-center justify-between">
+                <div class="h-1 w-8 bg-light-on-primary rounded-none"></div>
+                <div class="h-1 w-4 bg-light-on-primary/70 rounded-none"></div>
+              </div>
+              <div class="flex-1 p-1.5 bg-light-surface-container-low flex items-center justify-center">
+                <svg viewBox="0 0 50 30" class="w-full h-full"><path d="M16 8 L30 7 L36 16 L28 24 L15 20 Z" fill="#D95D24" opacity="0.9"></path></svg>
+              </div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Header Bar</span>
+          </button>
+
+          <!-- Floating Cards -->
+          <button type="button" data-v2-layout="Floating Cards" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="relative w-full aspect-[4/3] rounded-sm bg-light-surface-container-low border border-light-outline-variant overflow-hidden p-1.5 flex items-center justify-center">
+              <svg viewBox="0 0 50 34" class="w-full h-full"><path d="M18 10 L32 8 L38 18 L28 26 L16 22 Z" fill="#00628F" opacity="0.85"></path></svg>
+              <div class="absolute top-1.5 left-1.5 w-8 h-4 rounded-none bg-light-surface-container-lowest border border-light-outline-variant shadow-sm"></div>
+              <div class="absolute bottom-1.5 right-1.5 w-10 h-5 rounded-none bg-light-surface-container-lowest border border-light-outline-variant shadow-sm"></div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Floating Cards</span>
+          </button>
+
+          <!-- Dark Neon -->
+          <button type="button" data-v2-layout="Dark Neon" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-dark-surface border border-dark-outline-variant overflow-hidden p-1.5 flex gap-1">
+              <div class="flex-1 bg-dark-surface-container rounded-none flex items-center justify-center">
+                <svg viewBox="0 0 40 30" class="w-full h-full"><path d="M12 10 L24 8 L30 16 L22 24 L12 20 Z" fill="#8DCDFF" opacity="0.9"></path></svg>
+              </div>
+              <div class="w-1/3 bg-dark-surface-container-high rounded-none"></div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Dark Neon</span>
+          </button>
+
+          <!-- Pastel Aesthetic -->
+          <button type="button" data-v2-layout="Pastel Aesthetic" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-primary-container border border-light-outline-variant overflow-hidden p-1.5 flex gap-1">
+              <div class="flex-1 bg-light-surface-container-lowest rounded-none flex items-center justify-center">
+                <svg viewBox="0 0 40 30" class="w-full h-full"><path d="M12 10 L24 8 L30 16 L22 24 L12 20 Z" fill="#EB6A30" opacity="0.75"></path></svg>
+              </div>
+              <div class="w-1/3 bg-light-surface-container-lowest/80 rounded-none"></div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Pastel Aesthetic</span>
+          </button>
+
+          <!-- Portrait Modern -->
+          <button type="button" data-v2-layout="Portrait Modern" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-surface-container-low border border-light-outline-variant overflow-hidden p-1.5 flex items-center justify-center">
+              <div class="h-full aspect-[3/4] bg-light-surface-container-lowest border border-light-outline-variant rounded-none p-1 flex flex-col gap-1">
+                <div class="h-1.5 w-2/3 bg-light-on-surface rounded-none"></div>
+                <div class="flex-1 bg-light-surface-container-low rounded-none flex items-center justify-center">
+                  <svg viewBox="0 0 36 36" class="w-full h-full"><path d="M10 14 L22 10 L28 18 L22 26 L12 24 Z" fill="#00628F" opacity="0.9"></path></svg>
+                </div>
+              </div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Portrait Modern</span>
+          </button>
+
+          <!-- Pop Brutal -->
+          <button type="button" data-v2-layout="Pop Brutal" class="v2-layout-btn text-left rounded-md p-2 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex flex-col gap-1.5 transition-colors duration-state-change ease-state-change">
+            <div class="w-full aspect-[4/3] rounded-sm bg-light-primary-container border-2 border-light-on-surface overflow-hidden p-1.5 flex gap-1">
+              <div class="flex-1 bg-light-surface-container-lowest border border-light-on-surface flex items-center justify-center">
+                <svg viewBox="0 0 40 30" class="w-full h-full"><path d="M12 10 L24 8 L30 16 L22 24 L12 20 Z" fill="#B84309"></path></svg>
+              </div>
+              <div class="w-1/3 bg-light-surface-container-lowest border border-light-on-surface"></div>
+            </div>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Pop Brutal</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. Basemap (Langsung di bawah Gaya Peta) -->
+      <section class="p-gutter-md flex flex-col gap-3">
+        <div class="flex items-center justify-between gap-2">
+          <h2 data-design-text-token="title-md" class="font-headline text-title-md text-light-on-surface">Basemap</h2>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">6 pilihan</span>
+        </div>
+
+        <div id="v2-panel-basemap" class="grid grid-cols-2 gap-2">
+          <button type="button" data-v2-basemap="Tanpa basemap" class="v2-basemap-btn text-left rounded p-2.5 border border-light-tertiary bg-light-tertiary-container/35 flex items-center gap-2 transition-colors duration-state-change ease-state-change">
+            <span class="w-3 h-3 rounded-full bg-light-surface-container-lowest border border-light-outline shrink-0" aria-hidden="true"></span>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Tanpa basemap</span>
+          </button>
+          <button type="button" data-v2-basemap="Jalan (OSM)" class="v2-basemap-btn text-left rounded p-2.5 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex items-center gap-2 transition-colors duration-state-change ease-state-change">
+            <span class="w-3 h-3 rounded-full bg-light-tertiary-container border border-light-tertiary shrink-0" aria-hidden="true"></span>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Jalan (OSM)</span>
+          </button>
+          <button type="button" data-v2-basemap="Terang" class="v2-basemap-btn text-left rounded p-2.5 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex items-center gap-2 transition-colors duration-state-change ease-state-change">
+            <span class="w-3 h-3 rounded-full bg-light-surface-container border border-light-outline-variant shrink-0" aria-hidden="true"></span>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Terang</span>
+          </button>
+          <button type="button" data-v2-basemap="Gelap" class="v2-basemap-btn text-left rounded p-2.5 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex items-center gap-2 transition-colors duration-state-change ease-state-change">
+            <span class="w-3 h-3 rounded-full bg-dark-surface border border-dark-outline shrink-0" aria-hidden="true"></span>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Gelap</span>
+          </button>
+          <button type="button" data-v2-basemap="Citra satelit" class="v2-basemap-btn text-left rounded p-2.5 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex items-center gap-2 transition-colors duration-state-change ease-state-change">
+            <span class="w-3 h-3 rounded-full bg-success shrink-0" aria-hidden="true"></span>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Citra satelit</span>
+          </button>
+          <button type="button" data-v2-basemap="Topografi" class="v2-basemap-btn text-left rounded p-2.5 border border-light-outline-variant bg-light-surface-container-lowest hover:border-light-outline flex items-center gap-2 transition-colors duration-state-change ease-state-change">
+            <span class="w-3 h-3 rounded-full bg-light-secondary-container border border-light-secondary shrink-0" aria-hidden="true"></span>
+            <span data-design-text-token="label-md" class="font-body text-label-md text-light-on-surface">Topografi</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. Tampilan -->
+      <section class="p-gutter-md flex flex-col gap-3.5">
+        <h2 data-design-text-token="title-md" class="font-headline text-title-md text-light-on-surface">Tampilan Peta</h2>
+
+        <div class="flex flex-col gap-3">
+          <label data-component-id="toggle-description" data-component-type="toggle" data-component-variant="with-description" class="flex items-start justify-between gap-gutter-md cursor-pointer min-h-[56px]">
+            <div class="flex flex-col gap-0.5">
+              <span data-design-text-token="title-sm" class="font-body text-title-sm text-light-on-surface">Peta penuh</span>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-pretty">Peta memenuhi halaman, tanpa panel judul dan legenda.</span>
+            </div>
+            <button type="button" role="switch" aria-checked="false" class="v2-toggle relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-light-surface-container-highest p-0.5 transition-colors duration-state-change ease-state-change mt-0.5">
+              <span class="v2-thumb pointer-events-none inline-block h-5 w-5 translate-x-0 rounded-full bg-light-surface-container-lowest shadow-sm transition-transform duration-state-change ease-state-change"></span>
+            </button>
+          </label>
+
+          <label data-component-id="toggle-description" data-component-type="toggle" data-component-variant="with-description" class="flex items-start justify-between gap-gutter-md cursor-pointer min-h-[56px]">
+            <div class="flex flex-col gap-0.5">
+              <span data-design-text-token="title-sm" class="font-body text-title-sm text-light-on-surface">Wilayah sekitar</span>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-pretty">Desa, kecamatan, dan kab/kota tetangga beserta namanya.</span>
+            </div>
+            <button type="button" role="switch" aria-checked="true" class="v2-toggle relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-light-tertiary p-0.5 transition-colors duration-state-change ease-state-change mt-0.5">
+              <span class="v2-thumb pointer-events-none inline-block h-5 w-5 translate-x-5 rounded-full bg-light-on-tertiary shadow-sm transition-transform duration-state-change ease-state-change"></span>
+            </button>
+          </label>
+
+          <label data-component-id="toggle-description" data-component-type="toggle" data-component-variant="with-description" class="flex items-start justify-between gap-gutter-md cursor-pointer min-h-[56px]">
+            <div class="flex flex-col gap-0.5">
+              <span data-design-text-token="title-sm" class="font-body text-title-sm text-light-on-surface">Peta inset</span>
+              <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant text-pretty">Posisi lokasi di Indonesia, provinsi, dan kab/kota.</span>
+            </div>
+            <button type="button" role="switch" aria-checked="true" class="v2-toggle relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-light-tertiary p-0.5 transition-colors duration-state-change ease-state-change mt-0.5">
+              <span class="v2-thumb pointer-events-none inline-block h-5 w-5 translate-x-5 rounded-full bg-light-on-tertiary shadow-sm transition-transform duration-state-change ease-state-change"></span>
+            </button>
+          </label>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script>
+    (function () {
+      var activeLayout = "Klasik Kanan";
+      var activeBasemap = "Tanpa basemap";
+      var zoomLevel = 100;
+
+      var statusPill = document.getElementById("v2-status-pill");
+      var zoomReadout = document.getElementById("v2-zoom-readout");
+      var mapSvg = document.getElementById("v2-map-svg");
+      var searchInput = document.getElementById("v2-search-input");
+
+      function updateStatus() {
+        if (statusPill) {
+          statusPill.textContent = activeLayout + " · " + activeBasemap;
+        }
+      }
+
+      // Level Tabs
+      var levelTabs = document.querySelectorAll("[data-v2-level]");
+      levelTabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          levelTabs.forEach(function (t) {
+            t.setAttribute("aria-selected", "false");
+            t.setAttribute("tabindex", "-1");
+            t.classList.remove("bg-light-tertiary", "text-light-on-tertiary", "shadow-sm");
+            t.classList.add("text-light-on-surface-variant");
+          });
+          tab.setAttribute("aria-selected", "true");
+          tab.setAttribute("tabindex", "0");
+          tab.classList.add("bg-light-tertiary", "text-light-on-tertiary", "shadow-sm");
+          tab.classList.remove("text-light-on-surface-variant");
+          var lvl = tab.getAttribute("data-v2-level");
+          if (searchInput) searchInput.placeholder = "Ketik nama " + lvl.toLowerCase() + "...";
+        });
+      });
+
+      // Inspector Panel Sub-Tabs (Gaya Peta vs Basemap)
+      var tabLayout = document.getElementById("v2-panel-tab-layout");
+      var tabBasemap = document.getElementById("v2-panel-tab-basemap");
+      var panelLayout = document.getElementById("v2-panel-layout");
+      var panelBasemap = document.getElementById("v2-panel-basemap");
+
+      function showPanel(isLayout) {
+        if (isLayout) {
+          panelLayout.removeAttribute("hidden");
+          panelLayout.classList.remove("hidden");
+          panelLayout.classList.add("grid");
+          panelBasemap.setAttribute("hidden", "");
+          panelBasemap.classList.add("hidden");
+          panelBasemap.classList.remove("grid");
+          tabLayout.classList.add("bg-light-surface-container-lowest", "text-light-on-surface", "shadow-sm");
+          tabLayout.classList.remove("text-light-on-surface-variant");
+          tabBasemap.classList.remove("bg-light-surface-container-lowest", "text-light-on-surface", "shadow-sm");
+          tabBasemap.classList.add("text-light-on-surface-variant");
+        } else {
+          panelBasemap.removeAttribute("hidden");
+          panelBasemap.classList.remove("hidden");
+          panelBasemap.classList.add("grid");
+          panelLayout.setAttribute("hidden", "");
+          panelLayout.classList.add("hidden");
+          panelLayout.classList.remove("grid");
+          tabBasemap.classList.add("bg-light-surface-container-lowest", "text-light-on-surface", "shadow-sm");
+          tabBasemap.classList.remove("text-light-on-surface-variant");
+          tabLayout.classList.remove("bg-light-surface-container-lowest", "text-light-on-surface", "shadow-sm");
+          tabLayout.classList.add("text-light-on-surface-variant");
+        }
+      }
+      if (tabLayout) tabLayout.addEventListener("click", function () { showPanel(true); });
+      if (tabBasemap) tabBasemap.addEventListener("click", function () { showPanel(false); });
+
+      // Layout Buttons
+      var layoutBtns = document.querySelectorAll(".v2-layout-btn");
+      layoutBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          layoutBtns.forEach(function (b) {
+            b.classList.remove("border-2", "border-light-tertiary", "bg-light-tertiary-container/35");
+            b.classList.add("border", "border-light-outline-variant", "bg-light-surface-container-lowest");
+          });
+          btn.classList.remove("border", "border-light-outline-variant", "bg-light-surface-container-lowest");
+          btn.classList.add("border-2", "border-light-tertiary", "bg-light-tertiary-container/35");
+          activeLayout = btn.getAttribute("data-v2-layout") || activeLayout;
+          updateStatus();
+        });
+      });
+
+      // Basemap Buttons
+      var basemapBtns = document.querySelectorAll(".v2-basemap-btn");
+      basemapBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          basemapBtns.forEach(function (b) {
+            b.classList.remove("border-light-tertiary", "bg-light-tertiary-container/35");
+            b.classList.add("border-light-outline-variant", "bg-light-surface-container-lowest");
+          });
+          btn.classList.remove("border-light-outline-variant", "bg-light-surface-container-lowest");
+          btn.classList.add("border-light-tertiary", "bg-light-tertiary-container/35");
+          activeBasemap = btn.getAttribute("data-v2-basemap") || activeBasemap;
+          updateStatus();
+        });
+      });
+
+      // Toggles
+      var toggles = document.querySelectorAll(".v2-toggle");
+      toggles.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var isOn = btn.getAttribute("aria-checked") === "true";
+          var next = !isOn;
+          btn.setAttribute("aria-checked", String(next));
+          var thumb = btn.querySelector(".v2-thumb");
+          if (next) {
+            btn.classList.remove("bg-light-surface-container-highest");
+            btn.classList.add("bg-light-tertiary");
+            if (thumb) {
+              thumb.classList.remove("translate-x-0", "bg-light-surface-container-lowest");
+              thumb.classList.add("translate-x-5", "bg-light-on-tertiary");
+            }
+          } else {
+            btn.classList.remove("bg-light-tertiary");
+            btn.classList.add("bg-light-surface-container-highest");
+            if (thumb) {
+              thumb.classList.remove("translate-x-5", "bg-light-on-tertiary");
+              thumb.classList.add("translate-x-0", "bg-light-surface-container-lowest");
+            }
+          }
+        });
+      });
+
+      // Zoom
+      function applyZoom() {
+        if (zoomReadout) zoomReadout.textContent = zoomLevel + "%";
+        if (mapSvg) mapSvg.style.transform = "scale(" + (zoomLevel / 100) + ")";
+      }
+      var btnIn = document.getElementById("v2-zoom-in");
+      var btnOut = document.getElementById("v2-zoom-out");
+      var btnReset = document.getElementById("v2-zoom-reset");
+      if (btnIn) btnIn.addEventListener("click", function () { zoomLevel = Math.min(160, zoomLevel + 15); applyZoom(); });
+      if (btnOut) btnOut.addEventListener("click", function () { zoomLevel = Math.max(70, zoomLevel - 15); applyZoom(); });
+      if (btnReset) btnReset.addEventListener("click", function () { zoomLevel = 100; applyZoom(); });
+    })();
+  </script>
+
+
+</body></html>
