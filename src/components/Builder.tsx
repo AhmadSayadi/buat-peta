@@ -352,6 +352,12 @@ export default function Builder({ preset, initialQuery = "" }: Props) {
             </div>
 
             <div className="sheet">
+              {sceneState === "loading" && (
+                <div className="sheet-loading" role="status" aria-live="polite">
+                  <span className="spinner" aria-hidden="true" />
+                  <span>Memuat peta...</span>
+                </div>
+              )}
               <div
                 ref={previewRef}
                 className={`preview ${scene.selected.length ? "pannable" : ""}`}
@@ -429,7 +435,11 @@ export default function Builder({ preset, initialQuery = "" }: Props) {
                     {searchState === "error" ? (
                       <div className="empty">Pencarian gagal. Coba lagi sebentar.</div>
                     ) : searchState === "loading" && !results.length ? (
-                      <div className="empty">Mencari...</div>
+                      <div className="skeleton-list" role="status" aria-label="Mencari wilayah">
+                        <span className="skeleton-row" />
+                        <span className="skeleton-row" />
+                        <span className="skeleton-row" />
+                      </div>
                     ) : results.length ? (
                       results.map((r) => (
                         <button key={r.kode} type="button" role="option" aria-selected={false} className="result" onClick={() => addLokasi(r)}>
