@@ -3,7 +3,7 @@ export type Level = "desa" | "kecamatan" | "kabupaten";
 export type BBox = [minLng: number, minLat: number, maxLng: number, maxLat: number];
 export type Ring = [lng: number, lat: number][];
 
-/** Format data/index.json (hanya dibaca di server), lihat scripts/build-data.mjs. */
+/** Format data/index.json (hanya dibaca di server). */
 export interface RawIndex {
   p: [kode: string, nama: string][];
   k: [kode: string, nama: string, bbox: BBox][];
