@@ -60,8 +60,8 @@ Data sudah berada di folder `data/`:
 | `data/inset/*.json` | Geometri yang disederhanakan untuk peta inset. |
 
 Catatan:
-- Skrip pembuat data (`scripts/build-data.mjs`) tidak ada lagi di repositori. Jika data perlu dibuat ulang, skrip itu harus ditambahkan kembali dari sumber SQL-nya.
-- Menurut README sumber, data beberapa desa belum lengkap.
+
+- Data beberapa desa belum lengkap.
 - Batas kecamatan dan desa di sumber tidak selalu persis berimpit.
 
 ## Basemap dan atribusi
